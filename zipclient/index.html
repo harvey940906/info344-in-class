@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input>
+    <button id='city' onclick="submit">Submit</button>
+    <script>
+        fetch("http://localhost:8000/zips/city/seattle")
+            .then(function(resp){
+                return resp.json()
+            })
+            .then(function(data){
+                console.log(data)
+            })
+            .catch(function(err){
+                console.error(err)
+            })
+        // function submit() {
+        //     // Use Ajax to submit form data
+        //     $.ajax({
+        //         url: $form.attr('action'),
+        //         type: 'POST',
+        //         data: $('#city').val(),
+        //         success: function(result) {
+        //             // ... Process the result ...
+        //         }
+        //     });
+        // }
+    </script>
+    
+</body>
+</html>
