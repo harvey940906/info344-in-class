@@ -1,5 +1,2 @@
-FROM scratch
-ADD zipsvr zipsvr
-ADD zips.csv zips.csv
-EXPOSE 8080
-ENTRYPOINT ["/zipsvr"]
+FROM nginx
+COPY ./index.html /usr/share/nginx/html
