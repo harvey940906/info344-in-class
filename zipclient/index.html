@@ -7,30 +7,30 @@
     <title>Document</title>
 </head>
 <body>
-    <input>
-    <button id='city' onclick="submit">Submit</button>
+    <textarea id="input"></textarea>
+    <button id='city' onclick="handleClick()">Submit</button>
+    <div id="data"></div>
     <script>
-        fetch("http://localhost:8000/zips/city/seattle")
+        function handleClick(){
+            var input = document.getElementById("input").value;
+            console.log(input);
+            fetch("http://138.68.249.169/zips/city/"+input)
             .then(function(resp){
                 return resp.json()
             })
             .then(function(data){
-                console.log(data)
+                var dataAear = document.getElementById("data");
+                while (dataAear.firstChild){
+                    dataAear.removeChild(dataAear.firstChild);
+                }
+                document.getElementById("data").appendChild(document.createTextNode(JSON.stringify(data)));
+                console.log(data);
             })
             .catch(function(err){
                 console.error(err)
             })
-        // function submit() {
-        //     // Use Ajax to submit form data
-        //     $.ajax({
-        //         url: $form.attr('action'),
-        //         type: 'POST',
-        //         data: $('#city').val(),
-        //         success: function(result) {
-        //             // ... Process the result ...
-        //         }
-        //     });
-        // }
+        }
+
     </script>
 
 </body>
