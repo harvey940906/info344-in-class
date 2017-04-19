@@ -44,6 +44,6 @@ func (ms *MongoStore) Update(task *Task) error {
 	}
 	task.ModifiedAt = time.Now()
 	col := ms.Session.DB(ms.DatabaseName).C(ms.CollectionName)
-	updates := bson.M{"$set": bson.M{"complete": task.Complete, "modifiedAt": task.ModifiedAt}}
+	updates := bson.M{"$set": bson.M{"complete": task.Complete, "modifiedat": task.ModifiedAt}}
 	return col.UpdateId(task.ID, updates)
 }
